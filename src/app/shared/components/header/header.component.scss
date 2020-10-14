@@ -1,0 +1,11 @@
+// Cualquier elemento "a" que este dentro del "nav" tenga el siguiente estilo.
+nav > a {
+    padding: 5px;
+    text-decoration: none;
+}
+nav > a.active {
+    background-color: salmon;
+}
+.header-row{
+    width: 100%;
+}

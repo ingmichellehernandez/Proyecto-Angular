@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+// body{
+//     margin: 0px;
+//     padding: 0px;
+// }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// aplicando la tecnica css width.
+// product-grid se encargara de renderizar los productos en forma de grilla o cuadricula.
+.product-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); //  comportamiento de la grilla, se repite 3veces 1 fraccion.
+    grid-gap: 50px 20px; // genera espacio entre una grid y la otra
+}
+.container {
+    width: 1600px;
+    padding-right: 0;
+    padding-left: 0;
+    margin: 0 auto;
+   
+}
+
+
+
+// Regla de estilo Responsive
+
+@media (max-width: 768px){
+    .product-grid{
+        grid-template-columns: repeat(2, 1fr); //  comportamiento de la grilla, se repite 1 vez 1 fraccion.
+    }
+}
+@media (max-width: 576px){
+    .product-grid{
+        grid-template-columns: repeat(1, 1fr); //  comportamiento de la grilla, se repite 1 vez 1 fraccion.
+    }
+    .container {
+        width: 100%;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+}
+@media (max-width: 475px){
+    .product-grid{
+        grid-template-columns: repeat(1, 1fr); //  comportamiento de la grilla, se repite 1 vez 1 fraccion.
+    }
+}
+

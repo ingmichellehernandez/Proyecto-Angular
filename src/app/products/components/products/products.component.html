@@ -1,0 +1,13 @@
+
+<!-- Haremos un cadena de productos (iterar), variable iteradora "producto" -->
+<!-- Esto se encarga de renderizar una lista de productos -->
+<!-- El "clicked" solo se muestra en consola para ver el producto al que se agrego en el carrito -->
+<div class="product-grid">
+    <app-product 
+      *ngFor="let productos of products" 
+      (clicked)="clickProduct($event)"
+      [product]="productos">
+    </app-product>
+  </div>
+
+  <p>hola products</p>

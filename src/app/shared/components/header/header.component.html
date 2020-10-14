@@ -1,0 +1,26 @@
+<!-- Menú de navegación, se usara "routerLink" en vez de "href" -->
+<!-- Para aplicar estilos a los link se usara "routerLinkActive" con la clase que por lo general es "active" -->
+
+<!-- Para este estilo de la barra nos guiamos de la pagina de "material angular" -->
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row> <!--significa crear una fila-->
+
+<!-- tendra un aclase "header-row" que sera como flex, mandara los elementos a los extremos y respetara los tamaños-->
+    <div class="header-row row between-xs middle-xs">
+       <nav>
+         <a mat-button routerLink="/home" routerLinkActive="active">Home</a> 
+         <a routerLink="/products" routerLinkActive="active">Products</a>
+         <a routerLink="/contact" routerLinkActive="active">Contact</a>
+       </nav> 
+
+<!--Aquí dibujamos un boton de estilo "raised" de color blanco y dentro del boton estara el icono del carrito-->
+       <a mat-raised-button matBadge="15" matBadgeColor="warn"> 
+          <mat-icon>shopping_cart</mat-icon>
+          Carrito
+          <!-- <mat-icon matBadge="15" matBadgeColor="warn">shopping_cart</mat-icon> -->
+       </a>
+    </div>
+
+    </mat-toolbar-row>
+</mat-toolbar>

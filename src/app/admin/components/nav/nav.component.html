@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+<!-- con routerlink le decimos a que ruta debe ir -->
+      <a mat-list-item routerLink="/admin/create">Crear producto</a>
+      <a mat-list-item routerLink="/admin/table">Tabla de productos</a>
+      <a mat-list-item routerLink="/admin/dashboard">prueba</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>proyecto-angular</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+<!-- en este caso para crear las vistas anidadas de coloca router-outlet -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

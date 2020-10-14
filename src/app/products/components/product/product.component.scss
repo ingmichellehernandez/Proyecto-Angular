@@ -1,0 +1,25 @@
+// el "host" seria como tomar cada elemento (producto) y meterlos en cajitas.
+// :host{
+//     border: 1px solid purple;
+//     margin: 5px;
+//     border-radius: 5px;
+//     display: block; //para que el tamaño sea dinamico respecto al elemento.
+//     background-color: rgba(128, 0, 128, 0.301);
+// }
+.crop-image {
+    width: 100%;
+    height: 400px;
+    overflow: hidden; // mandar al fondo la imagen si se sobre sale del tamaño.
+    position: relative;
+    img {
+        position: absolute; 
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 100%;
+    }
+}
+
+.link-detalles > a {
+    color: rgb(191, 0, 255);
+}

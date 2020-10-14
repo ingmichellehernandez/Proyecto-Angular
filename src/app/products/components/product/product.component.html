@@ -1,0 +1,42 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{product.title | uppercase}}</mat-card-title>
+      <mat-card-subtitle>{{product.price | currency}}</mat-card-subtitle>
+    </mat-card-header>
+
+<!-- le daremos estilos a esta clase para que las imagenes tengan la misma dimension -->
+    <div class="crop-image">
+      <img mat-card-image [src]="product.image" alt="Imagen del producto">
+    </div>
+    
+    <mat-card-content>
+      <p>Descripción: {{product.description | slice:0:10}}</p>
+      <p>{{ today | date: 'MM/y, HH:mm' }}</p>
+    </mat-card-content>
+
+<!-- Aquí tenemos dos estilos de boton -->
+    <mat-card-actions>
+        <div class="link-detalles"> <!--lo meti en div para colocarle una clase-->
+         <a mat-button [routerLink]="['/products', product.id]">Ver detalles</a>   
+         <button mat-mat-raised-button (click)="addCart()" mat-raised-button color="primary">Agregar al carrito</button>
+        </div>
+    </mat-card-actions>
+  </mat-card>
+
+
+
+
+
+
+<!-- <h1 appHighlight>{{product.title | uppercase}}</h1> pipe "uppercase" transforma en MAYÚSCULA
+<img [src]="product.image" alt="Imagen del producto">
+<strong>{{product.price | currency}}</strong>
+
+pipe "slice" indica desde que punto a que punto se mostrara el texto
+<p>Descripción: {{product.description | slice:0:10}}</p>
+<p>{{ today | date: 'MM/y, HH:mm' }}</p> pile "date" es el mas comun, podria decirse que esta por defecto
+
+Haremos un Output que se llamará "click" el cual tendra un método
+<button (click)="addCart()" mat-raised-button color="primary">Agregar al carrito</button>
+<a [routerLink]="['/products', product.id]">Ver detalles</a> le pasaremos a "routerLink" un array, asi sera la url-->
+
