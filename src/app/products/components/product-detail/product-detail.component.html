@@ -1,11 +1,17 @@
-<div>
-    <img [src]="product.image" alt="">
-</div>
+<!-- Si la consulta es producto, lo muestra sino que no intente rendirizar -->
+<div *ngIf="product">
+    <div>
+        <img [src]="product.image" alt="">
+    </div>
 
-<div>
-    <ul>
-        <li>Nombre: {{ product.title}}</li> <!--Aqui renderizamos con string interpolation-->
-        <li>Precio: {{ product.price | currency }}</li> <!--Usando pipe para el precio-->
-    </ul>
-    <p>{{ product.description }}</p>
+    <div>
+        <ul>
+            <li>Nombre: {{ product.title}}</li> <!--Aqui renderizamos con string interpolation-->
+            <li>Precio: {{ product.price | currency }}</li> <!--Usando pipe para el precio-->
+        </ul>
+        <p>{{ product.description }}</p>
+    </div> 
+    <button (click)="createProduct()">Crear</button> 
+    <button (click)="updateProduct()">Modificar</button> 
+    <button (click)="deleteProduct()">Eliminar</button> 
 </div>

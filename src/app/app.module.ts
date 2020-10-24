@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http'; // con esto hacemos pet
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { ProductComponent } from './products/components/product/product.component';
-import { CartComponent } from './cart/cart.component';
+import { CartComponent } from './shared/components/cart/cart.component';
 // import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { DemoComponent } from './demo/demo.component';

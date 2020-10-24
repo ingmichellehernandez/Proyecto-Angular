@@ -24,12 +24,55 @@ export class ProductDetailComponent implements OnInit {
 // Le pedimos a "this.route" que nos de los parametros que estan en la ruta y luego nos suscribimos.
 // Al suscribise lo que decimos es que a medida que nos movemos de pag o de id este genere el cambio (nos suscribimos la cambio).
 // Recibimos los parametros que tenga la ruta y lo tipamos de tipo "Params" y luego se ejecuta la funsion imprimir.
-  ngOnInit(): void {
+  ngOnInit() {
     this.route.params.subscribe((params: Params) => {
     const id = params.id;
-    this.product = this.productsService.getProduct(id);
+    this.fetchProduct(id);
+    // this.product = this.productsService.getProduct(id);
     // console.log(product);
     });
   }
+// como el get nos devuelve una observable, se suscribe para que cambie y sea la data
+  fetchProduct(id: string) {
+    this.productsService.getProduct(id)
+    .subscribe(product => {
+      // console.log(product);
+      this.product = product;
+    });
+  }
 
+  createProduct() {
+    const newProduct: Product = {
+      id: '19',
+      title: 'nuevo',
+      image: 'assets/images/banner-1.jpg',
+      price: 3000,
+      description: 'nuevo producto creado desde angular'
+    };
+
+    this.productsService.createProduct(newProduct)
+    .subscribe(product => {
+      console.log(product);
+      // this.product = product;
+    });
+  }
+
+  updateProduct() {
+    const updateProduct: Partial<Product> = {
+      price: 5555555,
+      description: 'producto modificado'
+    };
+
+    this.productsService.updateProduct('2', updateProduct)
+    .subscribe(product => {
+      console.log(product);
+    });
+  }
+
+  deleteProduct() {
+    this.productsService.deleteProduct('19')
+    .subscribe(rta => {
+      console.log(rta);
+    });
+  }
 }
