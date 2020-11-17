@@ -90,6 +90,10 @@ export class ProductsService {
   // }
 
   deleteProduct(id: string) {
+    /**
+     * Esta es la documentacion.
+     * @param id id del elemento a eliminar .
+     */
     return this.http.delete(`${environment.url_api}/products/${id}`);
   }
 }

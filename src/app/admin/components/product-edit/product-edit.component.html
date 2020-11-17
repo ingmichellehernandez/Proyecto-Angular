@@ -1,0 +1,43 @@
+<!-- Usamos Angular Material -->
+<!-- Con "from" crearemos el formulario y con "[formGroup]" lo enlazamos con "form"" -->
+<!-- <form [formGroup]="form"> -->
+<!-- con "formControlName" enlazamos los input con su controlador -->
+<!-- el ouPut "(ngSumit)" enviara la inf a la funcion saveProduct cuando se le de click al boton-->
+<!-- el $event evita rendirizaciones incorrectas, atacha el evento de un formulario-->
+<form [formGroup]= "form" (ngSubmit)="saveProduct($event)"> 
+    <mat-card>
+        <mat-card-header>
+          <mat-card-title>Nuevo Producto</mat-card-title>
+        </mat-card-header>
+  
+        <mat-card-content class="content">
+  
+          <table><tr>
+              <td><mat-form-field>
+                  <mat-label>TÍTULO</mat-label>
+                  <input formControlName="title" matInput type="text" placeholder="Ex. Camisa">
+              </mat-form-field></td>
+              <td><mat-form-field>
+                  <mat-label>PRECIO</mat-label>
+                  <input formControlName="price" matInput type="number" placeholder="Ex. 3000">
+              </mat-form-field></td>
+  <!-- si el precio presenta error y adicionalmente ya fue tocado por el usuario se ejecutara esto -->
+              <div *ngIf="priceField.errors && priceField.dirty">
+  <!-- Solicitamos el precio del "from" y hacemos una pregunta (hasError) de tipo "price_invalid" -->
+              <p *ngIf="priceField.hasError('price_invalid')">No exceder de 10000</p>
+              <p *ngIf="priceField.hasError('required')">Este campo es requerido</p>
+              </div>
+          </tr></table>
+  
+          <table class="full-width">
+          <td><mat-form-field class="full-width">
+                  <mat-label>DESCRIPCIÓN</mat-label>
+                  <input formControlName="description" matInput type="text" placeholder="Ex. Descripción del nuevo producto">
+              </mat-form-field></td>
+          </table>
+          </mat-card-content>
+  <!-- type="submi" significa que sera un boton de envio de datos -->
+  <!-- [disable]="from.invalid" esto va a deshabilitar el boton al inicio y habilitarlo si el formulario es valido -->
+          <button [disabled]="form.invalid" mat-raised-button color="accent" type="submit">Guardar</button>
+      </mat-card>
+    </form>

@@ -16,6 +16,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
+
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -36,10 +40,12 @@ import { MatMenuModule } from '@angular/material/menu';
     MatPaginatorModule,
     MatSortModule,
     MatGridListModule,
-    MatMenuModule
-
-
+    MatMenuModule,
+    LayoutModule,
+    MatFormFieldModule,
+    MatStepperModule
   ],
+
 // Aquí se coloca todo los modulos que se van a exportar para ser usados en otros modulos.
   exports: [
    MatButtonModule,
@@ -56,7 +62,10 @@ import { MatMenuModule } from '@angular/material/menu';
    MatPaginatorModule,
    MatSortModule,
    MatGridListModule,
-   MatMenuModule
+   MatMenuModule,
+   LayoutModule,
+   MatFormFieldModule,
+   MatStepperModule
   ]
 
 })

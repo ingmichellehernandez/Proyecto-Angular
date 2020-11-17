@@ -12,12 +12,13 @@
          <a mat-button routerLink="/home" routerLinkActive="active">Home</a> 
          <a routerLink="/products" routerLinkActive="active">Products</a>
          <a routerLink="/contact" routerLinkActive="active">Contact</a>
+         <a routerLink="/demo" routerLinkActive="active">Demo</a>
        </nav> 
 
 <!--Aquí dibujamos un boton de estilo "raised" de color blanco y dentro del boton estara el icono del carrito-->
-       <a mat-raised-button matBadge="15" matBadgeColor="warn"> 
-          <mat-icon>shopping_cart</mat-icon>
-          Carrito
+<!-- Aquí si nos suscribimos con "async" y se rendirizara muy bien los cambios -->
+       <a mat-raised-button matBadgeColor="warn" [matBadge]="total$ |async" routerLink="/order"> 
+          <mat-icon>shopping_cart</mat-icon>Carrito
           <!-- <mat-icon matBadge="15" matBadgeColor="warn">shopping_cart</mat-icon> -->
        </a>
     </div>

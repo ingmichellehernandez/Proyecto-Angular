@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExponentialPipe } from '../shared/pipes/exponential/exponential.pipe';
-
+import { ExponentialPipe } from '../../shared/pipes/exponential/exponential.pipe';
 
 @Component({
   selector: 'app-demo',
@@ -9,11 +8,13 @@ import { ExponentialPipe } from '../shared/pipes/exponential/exponential.pipe';
 })
 export class DemoComponent implements OnInit {
 
-  power = 10; // sera el valor inicial
+  power = 5; // sera el valor inicial
   title = 'proyecto-angular';
 
 // A partir de aquí se hara un Array //
   items = ['Juan', 'Pedro', 'Carlos'];
+
+  constructor() { }
 
 // Funciones: van al final de codigo, después de las declaraciones.
   addItem(): void {
@@ -24,9 +25,6 @@ export class DemoComponent implements OnInit {
   deleteItem(index: number): any {
     this.items.splice(index, 1);
   }
-
-  constructor(
-    private exponentialpipe: ExponentialPipe) { }
 
   ngOnInit(): void {
   }

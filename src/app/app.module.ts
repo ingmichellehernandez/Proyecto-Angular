@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { CartComponent } from './shared/components/cart/cart.component';
 // import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
-import { DemoComponent } from './demo/demo.component';
+// import { DemoComponent } from './demo/demo.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 // import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -26,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CartComponent,
     // ProductsComponent,
     ContactComponent,
-    DemoComponent,
+    // DemoComponent,
     PageNotFoundComponent,
     // ProductDetailComponent,
     LayoutComponent

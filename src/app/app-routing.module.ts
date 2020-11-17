@@ -4,7 +4,7 @@ import { Routes, RouterModule, PreloadAllModules} from '@angular/router';
 // Comenzaremos a importar los componentes a utilizar, una vez ya creados.
 
 import { ContactComponent } from './contact/contact.component';
-import { DemoComponent } from './demo/demo.component';
+// import { DemoComponent } from './demo/demo.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 // import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -29,13 +29,12 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
-// "loadChildren" carga un modulo dinamicamente y se usara una funsion array.
+
         path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
       {
         path: 'products',
-        // loadChildren: () => import('./products/products.module').then(p => p.ProductsModule)
         loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
         // component: ProductsComponent
       },
@@ -45,14 +44,20 @@ const routes: Routes = [
         component: ContactComponent
       },
 //       {
-// // va a renderizar este componente dependiendo del "id" que esta recibiendo, ya que le enviamos un parametro.
+// va a renderizar este componente dependiendo del "id" que esta recibiendo, ya que le enviamos un parametro.
 //         path: 'products/:id',
 //         component: ProductDetailComponent
 //       },
       {
-        path: 'demo',
-        component: DemoComponent
+        path: 'order',
+        loadChildren: () => import('./order/order.module').then(m => m.OrderModule)
+        // component: DemoComponent
       },
+      {
+        path: 'demo',
+        loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
+        // component: DemoComponent
+      }
     ]
   },
       {
