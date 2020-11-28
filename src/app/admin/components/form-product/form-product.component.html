@@ -39,6 +39,13 @@
                 <input formControlName="description" matInput type="text" placeholder="Ex. Descripción del nuevo producto">
             </mat-form-field></td>
         </table>
+        <table class="full-width">
+<!--  como es un "observable" cuando termine de asignar aplicale "async" y resuelvelo y que solo se mustre si tiene valor -->
+            <img *ngIf="(image$ | async) as image" [src]="image" alt="">
+<!-- aqui colocaremos el componente "input file" nativo de JavaScript para subir una imagen -->
+<!-- detectaremos un evento con el metodo "change", cuando se detecte un cambio lo subira y le mandamos un evento -->            
+            <input type="file" (change)="uploadFiel($event)">
+            </table>
         </mat-card-content>
 <!-- type="submi" significa que sera un boton de envio de datos -->
 <!-- [disable]="from.invalid" esto va a deshabilitar el boton al inicio y habilitarlo si el formulario es valido -->

@@ -29,7 +29,7 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
-
+// "loadChildren" carga un modulo dinamicamente y se usara una funsion array, aqui se esta usando lazy loading.
         path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
@@ -40,7 +40,6 @@ const routes: Routes = [
       },
       {
         path: 'contact',
-        // canActivate: [AdminGuard],
         component: ContactComponent
       },
 //       {
@@ -61,9 +60,13 @@ const routes: Routes = [
     ]
   },
       {
-// "loadChildren" carga un modulo dinamicamente y se usara una funsion array, aqui se esta usando lazy loading.
         path: 'admin',
+        canActivate: [AdminGuard],
         loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+      },
+      {
+        path: 'auth',
+        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
       },
       {
         path: '**', // Esto indica cuando no haya ruta, no hubo match.

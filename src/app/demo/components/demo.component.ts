@@ -8,13 +8,14 @@ import { ExponentialPipe } from '../../shared/pipes/exponential/exponential.pipe
 })
 export class DemoComponent implements OnInit {
 
-  power = 5; // sera el valor inicial
+  power = 2; // sera el valor inicial
   title = 'proyecto-angular';
 
 // A partir de aquí se hara un Array //
   items = ['Juan', 'Pedro', 'Carlos'];
 
-  constructor() { }
+  constructor(
+  ) { }
 
 // Funciones: van al final de codigo, después de las declaraciones.
   addItem(): void {

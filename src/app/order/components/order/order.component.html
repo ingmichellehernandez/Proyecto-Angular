@@ -1,30 +1,45 @@
 
-
 <mat-horizontal-stepper labelPosition="bottom" #stepper>
-    <mat-step>
+  <mat-step>
         <ng-template matStepLabel>Sus productos</ng-template>
 <!-- Crearemos una variable "cantProducts" para no repetir esta linea "(orderProducts$ |async)" que es la suscripcion -->
         <div *ngIf="(orderProducts$ |async) as cantProducts">
+            <div> 
+            </div>
             <P *ngIf="cantProducts.length === 0">No hay productos</P> 
 <!-- Asi como se puede escuchar un "async" de un solo valor, tambien se puede recorrer un "async" -->        
-            <ul>
-              <li *ngFor="let product of cantProducts">
-                {{ product.title }}
-              </li>   
-            </ul>
+            <div class="row" *ngFor="let product of cantProducts">
+              <div class="col-xs-2">  
+                <div class="box-image">   
+                  <img class="image" [src]="product.image" alt="imagen del producto">      
+                </div>
+              </div>  
+
+              <div class="col-xs-2">    
+                <div class="box">
+                  <h2>{{ product.title }}</h2>  
+                </div>  
+              </div>        
+
+              <div class="col-xs-2">
+                <div class="box">
+                 <h2>{{ product.price }}</h2> 
+                </div>
+              </div>     
+
+            </div>         
         </div>
-    </mat-step>
-
+  </mat-step>  
     <mat-step>
-        <ng-template matStepLabel>Datos personales</ng-template>
-            <h1> CONTENIDO DE CADA COSA </h1>
+      <ng-template matStepLabel>Datos personales</ng-template>   
+        <p>CONTENIDO</p>
     </mat-step>
-
     <mat-step>
-        <ng-template matStepLabel>Datos personales</ng-template>
-            <h1> CONTENIDO DE CADA COSA </h1>
+      <ng-template matStepLabel>Pago</ng-template>     
+        <p>CONTENIDO DE PAGO</p>
     </mat-step>
-
+</mat-horizontal-stepper>
     
 
-    
+
+

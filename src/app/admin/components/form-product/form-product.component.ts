@@ -5,9 +5,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // importamos de angula en mo
 import { Router } from '@angular/router';
+import { AngularFireStorage } from '@angular/fire/storage';
+
+import { finalize } from 'rxjs/operators';
+
 // importamos "services" para crear el producto.
 import { ProductsService } from '../../../core/services/products/products.service';
 import { MyValidators } from '../../../utils/validators';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -17,11 +22,13 @@ import { MyValidators } from '../../../utils/validators';
 })
 export class FormProductComponent implements OnInit {
   form: FormGroup;
+  image$: Observable<any>;
 
   constructor(
     private formBuilder: FormBuilder,
     private productsService: ProductsService,
-    private router: Router
+    private router: Router,
+    private storage: AngularFireStorage
   ) {
 // Aqui llamamos a esa construcción en vez de llamarla en ngOnInit.
     this.buildForm();
@@ -49,6 +56,36 @@ saveProduct(event: Event): void {
       this.router.navigate(['./admin/products']);
     });
   }
+}
+
+// para subir el archivos se usara "angular FireStorage" que permite subir archivos a esta nube.
+// se recibe un evento.
+uploadFiel(event) {
+// primero se necesitara el archivo y "target" nos daria el elemento que no lo dan en un array, se quiere el de la posicion uno.
+  const file = event.target.files[0];
+// al ya tener el archivo, se guardara en el directorio "name" (nombre de la carpeta).
+  const name = 'image.png';
+// ahora se necesita saber la referencia de ese archivo utilizando el "storage".
+  const fileRef = this.storage.ref(name);
+// despues de tener la referencia, se crea una tarea para subir el archivo que esta en esa carpeta.
+  const task = this.storage.upload(name, file);
+
+// como la tarea es un "observable" y se demorara en subir se procesara con un pipe.
+// esto nos ayudara a saber cuando la carga finaliza o no.
+  task.snapshotChanges()
+  .pipe(
+    finalize(() => {
+//  se obtendra la url.
+      this.image$ = fileRef.getDownloadURL();
+// nos suscribimos para hacer que todo esto se procese.
+      this.image$.subscribe(url => {
+        console.log(url);
+// esta "url" se le asignara al formulario en el campo de "image".
+        this.form.get('image').setValue(url);
+      });
+    })
+  )
+  .subscribe();
 }
 
 // Crearemos un método "private", llamaremos la instancia de "formBuild" y mostrar un grupo basados en un Json.

@@ -20,7 +20,7 @@ export class CartService {
   private cart = new BehaviorSubject<Product[]>([]);
 
 // creamos una variable publica que pueda ser preguntada por cualquier componente y que sea de tipo "observable"
-// ais al subscribirse podran notar los cambios en tiempo real.
+// asi al subscribirse podran notar los cambios en tiempo real.
 cart$ = this.cart.asObservable();
 
   constructor() { }

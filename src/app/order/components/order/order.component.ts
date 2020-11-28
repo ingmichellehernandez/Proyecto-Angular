@@ -5,6 +5,8 @@ import { from, Observable } from 'rxjs';
 import { Product } from 'src/app/product.model';
 import { CartService } from '../../../core/services/cart.service';
 
+
+
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
@@ -23,5 +25,9 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+
+
 
 }
